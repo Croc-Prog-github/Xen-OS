@@ -7,5 +7,5 @@ Il sistema operativo della console Xenos.
 | Ethernet     |              |Size os: 8GB        |Connettore:          |
 |              |              |User space: 4GB     |Jack: X              |
 |              |              |                    |USB: X               |
-|              |              |                    |Jack G: V            |
+|              |              |                    |Jack G: OK           |
 |              |              |                    |Port.Ser.25PIN: X    |
