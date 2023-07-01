@@ -2,7 +2,7 @@
 Il sistema operativo della console Xenos.
 
 |   **INTERNET**   |    |**CONTROLLER**|    |   **HARD DISK**  |
-|--------------|    |----------|    |--------------+
+|--------------|    |----------|    |--------------|
 | Arduino      |    | MAX:2    |    |LETTORE-SCRIT |
 | Ethernet     |    |----------|    |TORE SD       |
 |--------------|                    |--------------|
