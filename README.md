@@ -9,4 +9,4 @@ Il sistema operativo della console Xenos.
 |              |              |                    |USB: X               |                 |RCA: X       |
 |              |              |                    |Jack G: OK           |                 |VGA: OK      |
 |              |              |                    |Port.Ser.25PIN: X    |                 |             |
-                                                   |Buffer Altern.Audi: X|                 |             |
+|              |              |                    |Buffer Altern.Audi: X|                 |             |
