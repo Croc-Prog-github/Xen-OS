@@ -1,6 +1,8 @@
 # Xen-OS
 Il sistema operativo della console Xenos.
 
+## Caratteristiche base
+
 | **INTERNET** |**CONTROLLER**|**HARD DISK**       |**AUDIO**            |**ALIMENTAZIONE**|**SCHERMO**  |
 |--------------|--------------|--------------------|---------------------|-----------------|-------------|
 |Arduino Ethernet| MAX: 2       |Lettore-scrittore SD|Integrato: X         |Batteria: X      |Integrato: X |
@@ -10,3 +12,9 @@ Il sistema operativo della console Xenos.
 |              |              |                    |Jack G: OK           |                 |VGA: OK      |
 |              |              |                    |Port.Ser.25PIN: X    |                 |             |
 |              |              |                    |Buffer Altern.Audi: X|                 |             |
+
+## Config. delle schede
+|**Tutto in Arduino Mega**|**Separati in schede**|
+|---------------------|------------------|
+|Economico: true|Economico: false|
+|Prestazioni: false|Prestazioni: true|
