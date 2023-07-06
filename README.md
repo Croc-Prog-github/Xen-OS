@@ -18,3 +18,6 @@ Il sistema operativo della console Xenos.
 |---------------------|------------------|
 |Economico: true|Economico: false|
 |Prestazioni: false|Prestazioni: true|
+|Problemi stimati: 30%|Problemi stimati: 45%|
+|Flessibilità di prog.: false|Flessibilità di prog.: true|
+|Stima Tempo 1°modello: 15h|Stima Tempo 1°modello: 34h|
