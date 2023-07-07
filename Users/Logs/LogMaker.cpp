@@ -14,7 +14,7 @@ void MakeFile(const string& arg) {
         return;
     }
 
-    ofstream file(filePath);
+    std::ofstream file(filePath.c_str());
 
     if (file.is_open()) {
         file << "This is a sample file." <<endl;
