@@ -1,7 +1,7 @@
 # Xen-OS
 Il sistema operativo della console Xenos.
 
-## Caratteristiche base
+## Caratteristiche principali
 
 | **INTERNET** |**CONTROLLER**|**HARD DISK**       |**AUDIO**            |**ALIMENTAZIONE**|**SCHERMO**  |
 |--------------|--------------|--------------------|---------------------|-----------------|-------------|
@@ -15,7 +15,7 @@ Il sistema operativo della console Xenos.
 
 ## Config. delle schede
 |**Tutto in Arduino Mega**|**Separati in schede**|
-|---------------------|------------------|
+|-------------------------|------------------|
 |Economico: true|Economico: false|
 |Prestazioni: false|Prestazioni: true|
 |Problemi stimati: 30%|Problemi stimati: 45%|
