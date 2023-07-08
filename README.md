@@ -1,6 +1,9 @@
 # Xen-OS
 Il sistema operativo della console Xenos.
 
+Task List:
+(Project)[https://github.com/users/Croc-Prog-github/projects/5/views/1]
+
 ## Caratteristiche principali
 
 | **INTERNET** |**CONTROLLER**|**HARD DISK**       |**AUDIO**            |**ALIMENTAZIONE**|**SCHERMO**  |
