@@ -1,16 +1,28 @@
 {
-    // Usare IntelliSense per informazioni sui possibili attributi.
-    // Al passaggio del mouse vengono visualizzate le descrizioni degli attributi esistenti.
-    // Per altre informazioni, visitare: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        {
-            "type": "lldb",
-            "request": "launch",
-            "name": "Launch",
-            "program": "${workspaceFolder}/<program>",
-            "args": [],
-            "cwd": "${workspaceFolder}"
-        }   
+      {
+        "name": "C++ Launch",
+        "type": "cppdbg",
+        "request": "launch",
+        "program": "${workspaceFolder}/<path_to_executable>",
+        "args": [],
+        "stopAtEntry": false,
+        "cwd": "${workspaceFolder}",
+        "environment": [],
+        "externalConsole": true,
+        "windows": {
+          "MIMode": "gdb",
+          "miDebuggerPath": "C:\\path\\to\\gdb.exe"
+        },
+        "linux": {
+          "MIMode": "gdb",
+          "miDebuggerPath": "/path/to/gdb"
+        },
+        "osx": {
+          "MIMode": "lldb"
+        },
+        "preLaunchTask": "build"
+      }
     ]
-}
+}  
