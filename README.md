@@ -2,7 +2,7 @@
 Il sistema operativo della console Xenos.
 
 Task List:
-(Project)[https://github.com/users/Croc-Prog-github/projects/5/views/1]
+[Project](https://github.com/users/Croc-Prog-github/projects/5/views/1)
 
 ## Caratteristiche principali
 
