@@ -4,14 +4,13 @@
     // Per altre informazioni, visitare: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-
         {
             "type": "lldb",
             "request": "launch",
             "name": "Launch",
-            "program": "/Sistem/MoodProv/menu",
+            "program": "${workspaceFolder}/<program>",
             "args": [],
-            "cwd": "/Sistem/MoodProv"
-        }
+            "cwd": "${workspaceFolder}"
+        }   
     ]
 }
