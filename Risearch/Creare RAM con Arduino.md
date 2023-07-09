@@ -25,6 +25,8 @@ Presumendo di creare un codice che possa usare il 100% della memoria interna del
 ## Come usare un Memory Chip per creare una RAM?
 #### Fonte: Chat GPT
 
+Per creare una RAM utilizzando un memory chip esterno, come ad esempio una memoria SRAM o una memoria DRAM, dovrai seguire i seguenti passaggi generali:
+
 1. **Seleziona il chip di memoria**: Scegli un memory chip   esterno adatto alle tue esigenze, considerando i requisiti di capacità, velocità e interfaccia.
 2. **Collega il chip di memoria al microcontrollore**: Collega il chip di memoria al microcontrollore utilizzando l'interfaccia appropriata, come ad esempio un bus di dati e un bus di indirizzi. È importante consultare il datasheet del chip di memoria e del microcontrollore per comprendere i dettagli dell'interfacciamento e dei segnali necessari.
 3. **Configura il chip di memoria**: Inizializza il chip di memoria seguendo le specifiche del suo datasheet. Ciò può includere l'impostazione di parametri come la modalità di funzionamento (ad esempio, asincrona o sincrona), il timing dei segnali, le opzioni di gestione dell'alimentazione e altre configurazioni specifiche del chip.
@@ -39,7 +41,7 @@ Presumendo di creare un codice che possa usare il 100% della memoria interna del
 
 
 ## Info e definizioni
-#### Fonte: [Wikipedia](https://it.wikipedia.org/wiki/RAM)
+#### Fonte: [Wikipedia](https://it.wikipedia.org/wiki/RAM); [Seample RAM Wikipedia](https://simple.wikipedia.org/wiki/Random-access_memory)
 
 **Asincrone**: ovvero l'accesso in scrittura ed in lettura è comandato direttamente dai segnali in ingresso. 
 <br>
