@@ -25,6 +25,7 @@ Ci sono aggiornamenti e info sul progetto nelle Discussioni.
 |              |              |                    |Port.Ser.25PIN: X    |                 |             |
 |              |              |                    |Buffer Altern.Audi: X|                 |             |
 
+<!--
 ## Config. delle schede
 |**Tutto in Arduino Mega**|**Separati in schede**|
 |-------------------------|------------------|
@@ -33,3 +34,4 @@ Ci sono aggiornamenti e info sul progetto nelle Discussioni.
 |Problemi stimati: 30%|Problemi stimati: 45%|
 |Flessibilità di prog.: false|Flessibilità di prog.: true|
 |Stima Tempo 1°modello: 15h|Stima Tempo 1°modello: 34h|
+-->
