@@ -1,7 +1,7 @@
 # Xen-OS
 Il sistema operativo della console Xenos.
 
-La console Xenos e Xen-OS sono un progetto con lo scopo di ricreare una console di gioco (come la PS4, XBOX,...) usando la scheda Arduino e un box esterno stampato in 3D. Il Proggetto è stato fondato da @Croc-Prog-github in collaborazione con @ZEUSSTARSOP
+La console Xenos e Xen-OS sono un progetto con lo scopo di ricreare una console di gioco (come la PS4, XBOX,...) aggiungendogli un sistema operativo sfruttando la scheda Arduino e un box esterno stampato in 3D. Il Proggetto è stato fondato da @Croc-Prog-github in collaborazione con @ZEUSSTARSOP
 
 **IMPORTANTE**: Per contribuire allo sviluppo del progetto crea una Pull Request e quando hai finito, inviala per l'approvazione.
 
