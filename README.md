@@ -15,10 +15,10 @@ Ci sono aggiornamenti e info sul progetto nelle Discussioni.
 
 ## Caratteristiche principali
 
-| **INTERNET** |**CONTROLLER**|**HARD DISK**       |**AUDIO**            |**ALIMENTAZIONE**|**SCHERMO**  |
+| **RAM** |**CONTROLLER**|**HARD DISK**       |**AUDIO**            |**ALIMENTAZIONE**|**SCHERMO**  |
 |--------------|--------------|--------------------|---------------------|-----------------|-------------|
-|Arduino Ethernet| MAX: 2     Lettore-scrittore SD |Integrato: X         |Batteria: X      |Integrato: X |
-|              |Comand: Wirles|Size os: 8GB        |Connettore:          |Alimentatore: OK |HDMI: X      |
+|Slot:1        | MAX: 2     Lettore-scrittore SD |Integrato: X         |Batteria: X      |Integrato: X |
+|Dimensione:1GB|Comand: Wirles|Size os: 8GB        |Connettore:          |Alimentatore: OK |HDMI: X      |
 |              |              |User space: 4GB     |Jack: X              |                 |Pres.Scart: X|
 |              |              |                    |USB: X               |                 |RCA: OK      |
 |              |              |                    |RCA: OK              |                 |VGA: X       |
