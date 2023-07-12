@@ -18,7 +18,7 @@ Presumendo di creare un codice che possa usare il 100% della memoria interna del
   #include <string.h>
 
   int main() {
-    string m = [];
+    string m = [100%];
   }
 ```
 

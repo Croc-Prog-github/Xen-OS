@@ -17,14 +17,22 @@ Ci sono aggiornamenti e info sul progetto nelle Discussioni.
 
 | **INTERNET** |**CONTROLLER**|**HARD DISK**       |**AUDIO**            |**ALIMENTAZIONE**|**SCHERMO**  |
 |--------------|--------------|--------------------|---------------------|-----------------|-------------|
-|Arduino Ethernet| MAX: 2       |Lettore-scrittore SD|Integrato: X         |Batteria: X      |Integrato: X |
+|Arduino Ethernet| MAX: 2     Lettore-scrittore SD |Integrato: X         |Batteria: X      |Integrato: X |
 |              |Comand: Wirles|Size os: 8GB        |Connettore:          |Alimentatore: OK |HDMI: X      |
 |              |              |User space: 4GB     |Jack: X              |                 |Pres.Scart: X|
-|              |              |                    |USB: X               |                 |RCA: X       |
-|              |              |                    |Jack G: OK           |                 |VGA: OK      |
+|              |              |                    |USB: X               |                 |RCA: OK      |
+|              |              |                    |RCA: OK              |                 |VGA: X       |
 |              |              |                    |Port.Ser.25PIN: X    |                 |             |
 |              |              |                    |Buffer Altern.Audi: X|                 |             |
 
+
+## RCA video e audio
+**RCA: Rosso, Bianco, Giallo**
+|Colore|Segnale|
+|------|-------|
+|Rosso|audio destra|
+|Bianco|audio sinistra|
+|Giallo|video|
 <!--
 ## Config. delle schede
 |**Tutto in Arduino Mega**|**Separati in schede**|
