@@ -56,3 +56,11 @@ Infine: si pensa che bisogna mettere dei Memory Chip collegati e contollati da u
 A causa del non perfetto isolamento, il condensatore si scarica, quindi dopo un breve lasso di tempo il suo contenuto diventa completamente inaffidabile. Si rende necessario perciò ricaricarlo, l'operazione è detta di "refreshing", provvedendo ad eseguire un'operazione di lettura fittizia e riscrittura entro il tempo massimo in cui il contenuto può essere considerato ancora valido. Queste operazioni sono eseguite da un circuito interno alle memorie stesse. Oltre a comportare un certo dispendio di energia rendono più lenta la memoria in quanto, mentre si sta eseguendo il refreshing, non è possibile accedervi. Le memorie DRAM si possono considerare abbastanza affidabili anche perché molto spesso ad ogni riga della memoria è associato un bit di parità, che consente di individuare eventuali errori singoli all'interno della riga, oppure una serie di bit (login), che opportunamente impostati nel momento di ogni scrittura, generano il codice di Hamming corrispondente, che consente di individuare e correggere errori singoli e individuare errori doppi.
 
 È importante sottolineare come l'operazione di lettura sia distruttiva, in quanto nel momento in cui un dato viene letto viene anche perso; risulta quindi necessaria la sua riscrittura immediata e questa porta a uno spreco di tempo.
+
+> 12/07/2023
+
+Per gestire il microcontrollore della RAM ho trovato lo schema della pedinatura; infatti usa le corrispondenze dei pin Arduino, questo rende più semplice la connessione diretta tra Scheda arduino e microcontrollore.
+
+[Schema pedinatura ATmega168](/Risearch/png/Pedinatura_ATmega168.png)
+<br>
+![Schema pedinatura ATmega168](/Risearch/png/Pedinatura_ATmega168.png)
