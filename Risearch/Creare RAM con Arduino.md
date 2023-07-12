@@ -60,7 +60,9 @@ A causa del non perfetto isolamento, il condensatore si scarica, quindi dopo un 
 > 12/07/2023
 
 Per gestire il microcontrollore della RAM ho trovato lo schema della pedinatura; infatti usa le corrispondenze dei pin Arduino, questo rende più semplice la connessione diretta tra Scheda arduino e microcontrollore.
+<br>
 **Possiamo quindi collegarlo direttamente ad Arduino e programmarlo dai pin**
+<br>
 ![Schema pedinatura ATmega168](/Risearch/png/Pedinatura_ATmega168.png)
 <br>
 **Guarda anche:** per programmare il microcontrollore serve una [scheda programmatore](https://it.aliexpress.com/item/1005002024535402.html?pdp_npi=2%40dis%21EUR%212%2C28%E2%82%AC%211%2C78%E2%82%AC%21%21%21%21%21%40211b446416891975608484484e7e18%2112000018450454697%21btf&_t=pvid%3A6b026697-c6a6-4801-b510-cff78210e0f5&afTraceInfo=1005002024535402__pc__pcBridgePPC__xxxxxx__1689197561&spm=a2g0o.ppclist.product.mainProduct&gatewayAdapt=glo2ita)
