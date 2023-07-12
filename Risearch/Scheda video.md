@@ -1,4 +1,4 @@
-# Inviare bit video con VGA
+# Scheda video
 
 > 08/07/2023
 #### Fonte: Bing AI
