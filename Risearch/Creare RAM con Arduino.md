@@ -60,7 +60,4 @@ A causa del non perfetto isolamento, il condensatore si scarica, quindi dopo un 
 > 12/07/2023
 
 Per gestire il microcontrollore della RAM ho trovato lo schema della pedinatura; infatti usa le corrispondenze dei pin Arduino, questo rende più semplice la connessione diretta tra Scheda arduino e microcontrollore.
-
-[Schema pedinatura ATmega168](/Risearch/png/Pedinatura_ATmega168.png)
-<br>
 ![Schema pedinatura ATmega168](/Risearch/png/Pedinatura_ATmega168.png)
