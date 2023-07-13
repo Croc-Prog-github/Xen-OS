@@ -1,4 +1,5 @@
 # Scheda audio
+**Ordine**: Data di creazione, Decrescente.
 
 > 12/07/2023
 #### Fonte: Chat GPT
