@@ -81,7 +81,7 @@ Per creare una RAM utilizzando un memory chip esterno, come ad esempio una memor
 
 ### Skech di come verrebbe:
 Infine: si pensa che bisogna mettere dei Memory Chip collegati e contollati da un Microcontrollore.
-![Skech fritzing](/Risearch/png/Skech_fritzing.png)
+![Skech fritzing](/Risearch/png/Skech_frizzing.png)
 
 ## Info e definizioni
 #### Fonte: [Wikipedia](https://it.wikipedia.org/wiki/RAM); [Seample RAM Wikipedia](https://simple.wikipedia.org/wiki/Random-access_memory)
