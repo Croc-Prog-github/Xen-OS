@@ -12,14 +12,13 @@ Il codice usato per leggere/scrivere sulla RAM è il seguente:
 
 **WARNIG: Questo codice non è verificato**
 ```c++
-  /* CONNECTION TEST TO A SRAM CHIP OF 8Kx8
-  USING 2 74595 SHIFT REGISTERS TO MANAGE THE ADDRESS,
-  1 74595 TO MANAGE THE DATA TO BE READ/WRITTEN INTO THE RAM
-  AND 1 74165 P/S SHIFT REG. TO READ DATA FROM RAM
+  /* TEST DI CONNESSIONE AD UN CHIP SRAM DA 8Kx8 UTILIZZANDO 2 REGISTRI 
+  DI TURNO 74595 PER GESTIRE L'INDIRIZZO, 1 74595 PER GESTIRE I DATI DA 
+  LEGGERE/SCRIVERE NELLA RAM E 1 74165 P/S TURNO REG. PER LEGGERE I DATI DALLA RAM
   */
   #include <EEPROM.h>
 
-  // Connecting the pins
+  // Connessione ai pin
   //1st and 2nd 595
   #define data1pin 2 //pin DS
   #define latch1pin 3 //pin ST_CP
@@ -40,9 +39,9 @@ Il codice usato per leggere/scrivere sulla RAM è il seguente:
   #define clock_pin 10 //pin Q7
 
   void setup() {
-    //initial pin setup
+    //configurazione iniziale dei pin
  
-    //pin of the shift registers 1, 2 and 3: OUTPUT
+    //pin dei registri a scorrimento 1, 2 e 3: OUTPUT
     pinMode(latch1pin, OUTPUT);
     pinMode(clock1pin, OUTPUT);
     pinMode(data1pin, OUTPUT);
@@ -59,11 +58,11 @@ Il codice usato per leggere/scrivere sulla RAM è il seguente:
     pinMode(set_load, OUTPUT);
     pinMode(load_data, INPUT);  
     
-    //initialize ram
+    //inizializza la ram
     digitalWrite(ram_oe, HIGH);
     digitalWrite(ram_we, HIGH);
     
-    //set D13 for LED flashes
+    //impostare D13 per i lampeggi del LED
     pinMode(13, OUTPUT);
     
     for (unsigned int mem_address = 0; mem_address <20; mem_address++) {
@@ -72,10 +71,10 @@ Il codice usato per leggere/scrivere sulla RAM è il seguente:
   }
 
   void loop() {
-    unsigned int mem_address; //the address to be used
-    byte value = 3; //the value to be used
+    unsigned int mem_address; //l'indirizzo da utilizzare
+    byte value = 3; //il valore da utilizzare
 
-    // clear 10 locations in the SRAM and then write a sequence of numbers
+    // cancellare 10 posizioni nella SRAM e quindi scrivere una sequenza di numeri
     for (mem_address = 0; mem_address < 20; mem_address++) {
       write_ram(mem_address, value);
       value += 3;
@@ -83,7 +82,7 @@ Il codice usato per leggere/scrivere sulla RAM è il seguente:
     delay(500);
     
     value = 255;
-    //read the first 10 bytes and then write them into the uC EEPROM
+    //leggere i primi 10 byte e poi scriverli nella uC EEPROM
     for (mem_address = 0; mem_address < 20; mem_address++) {
       value = read_ram(mem_address);
       EEPROM.write(mem_address, value);
@@ -97,8 +96,8 @@ Il codice usato per leggere/scrivere sulla RAM è il seguente:
   void write_ram(unsigned int mem_address, byte value) {
     byte hbyte, lbyte;
     
-    digitalWrite(set_load, HIGH); // put the 165 pins in H.I. to prevent short circuits on the data bus
-    //write the address into the shift registers 1 and 2
+    digitalWrite(set_load, HIGH); //metti i 165 pin in H.I. per evitare cortocircuiti sul bus dati
+    //scrivere l'indirizzo nei registri a scorrimento 1 e 2
     digitalWrite(latch1pin, LOW);
     digitalWrite(latch2pin, LOW);
     digitalWrite(clock1pin, LOW);
@@ -107,16 +106,16 @@ Il codice usato per leggere/scrivere sulla RAM è il seguente:
     lbyte = lowByte(mem_address);
     shiftOut(data1pin, clock1pin, MSBFIRST, hbyte);
     shiftOut(data1pin, clock1pin, MSBFIRST, lbyte);
-    //write the value into the 3rd s/r
+    //scrivi il valore nella 3a s/r
     shiftOut(data2pin, clock2pin, MSBFIRST, value);
-    //set the address and data "visibile" on the busses
+    //impostare l'indirizzo ei dati "visibili" sui bus
     digitalWrite(latch1pin, HIGH);
     digitalWrite(latch2pin, HIGH);
-    //write to RAM
+    //scrivi nella RAM
     digitalWrite(ram_we, LOW);
     digitalWrite(ram_we, HIGH);
     
-    //disable all the chips
+    //disabilitare tutti i chip
     digitalWrite(latch1pin, LOW);
     digitalWrite(latch2pin, LOW);
   }
@@ -124,25 +123,25 @@ Il codice usato per leggere/scrivere sulla RAM è il seguente:
   byte read_ram(unsigned int mem_address) {
     byte value, hbyte, lbyte;
     
-    //read the content of the byte "indirizzo"
-    //write the address
+    //leggere il contenuto del byte "indirizzo"
+    //scrivi l'indirizzo
     digitalWrite(latch1pin, LOW);
     digitalWrite(latch2pin, LOW);
-    digitalWrite(ram_we, HIGH); //disable the 3rd 595 and tell the RAM not to write in itself
+    digitalWrite(ram_we, HIGH); //disabilitare il 3° 595 e dire alla RAM di non scrivere in se stessa
     hbyte = highByte(mem_address);
     lbyte = lowByte(mem_address);
     shiftOut(data1pin, clock1pin, MSBFIRST, hbyte);
     shiftOut(data1pin, clock1pin, MSBFIRST, lbyte);
     
-    //set the address "visible" on the bus
+    //impostare l'indirizzo "visibile" sul bus
     digitalWrite(latch1pin, HIGH);
     digitalWrite(latch2pin, HIGH);
-    //prepare the 165
+    //preparare il 165
     digitalWrite(clock_pin, HIGH);
     digitalWrite(set_load, LOW);
-    //read from RAM
+    //leggi dalla RAM
     digitalWrite(ram_oe, LOW);
-    //load the data from the 165
+    //caricare i dati dal 165
     digitalWrite(set_load, HIGH);
     digitalWrite(ram_oe, HIGH);
     value = shiftIn(load_data, clock_pin, MSBFIRST);
