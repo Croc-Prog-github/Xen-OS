@@ -3,7 +3,7 @@
 
 > 14/07/2023
 ## Come programmare la RAM
-**Fonte: https://forum.arduino.cc/t/accedere-ad-una-sram-parallela/51187**
+**Fonte: https://forum.arduino.cc/t/accedere-ad-una-sram-parallela/51187**<br>
 Per gestire in lettura/scrittura una SRAM⚠️ esterna di tipo parallelo, non una seriale a cui si può accedere tramite I2C o SPI ma una classica memoria con un bus indirizzi ed un bus dati indipendenti.<br>
 
 Realizzato con 1 chip di SRAM (ovviamente), tre 74595 ed un 74165, interfacciati ad un Arduino. La SRAM è una Cypress 7C185 da 64 Kbit (8Kx8) ma può essere usato qualunque chip, (con le dovute modifiche).<br>
@@ -67,7 +67,7 @@ Il codice usato per leggere/scrivere sulla RAM è il seguente:
     pinMode(13, OUTPUT);
     
     for (unsigned int mem_address = 0; mem_address <20; mem_address++) {
-        write_ram(mem_address, 0);
+      write_ram(mem_address, 0);
     }
   }
 
@@ -77,17 +77,17 @@ Il codice usato per leggere/scrivere sulla RAM è il seguente:
 
     // clear 10 locations in the SRAM and then write a sequence of numbers
     for (mem_address = 0; mem_address < 20; mem_address++) {
-        write_ram(mem_address, value);
-        value += 3;
+      write_ram(mem_address, value);
+      value += 3;
     }
     delay(500);
     
     value = 255;
     //read the first 10 bytes and then write them into the uC EEPROM
     for (mem_address = 0; mem_address < 20; mem_address++) {
-        value = read_ram(mem_address);
-        EEPROM.write(mem_address, value);
-        delay(10);
+      value = read_ram(mem_address);
+      EEPROM.write(mem_address, value);
+      delay(10);
     }
     digitalWrite(13, HIGH);
     delay(3000);
