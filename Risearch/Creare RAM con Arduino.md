@@ -3,6 +3,79 @@
 
 > 14/07/2023
 ## Come programmare la RAM
+
+**Fonte: Chat GPT**<br>
+Passaggi per programmare un microcontrollore esterno con Arduino
+1. Collega e seleziona l'Arduino
+2. Vai su: "Strumenti" > "Programmatore" e seleziona "Arduino as ISP".
+3. Vai su "Strumenti" > "Scrivi il bootloader". (Da qui sei dentro al microcontollore esterno)
+4. Scrivi il tuo codice nell'IDE di Arduino come faresti normalmente. Assicurati di selezionare la scheda Arduino attuale dal menu "Strumenti" > "Scheda" in modo che il codice venga compilato per l'ATmega168-20PU.
+
+**Fonte: Chat GPT**<br>
+Un altro esempio è quello di generare un codice Writing presumendo che:<br>
+- memory chip DRAM collegati tramite bus
+- gestiti da un ATmega168-20PU<br>
+**WARNIG: Questo codice non è verificato**
+```c++
+  #include <avr/io.h>
+
+  // Dichiarazioni dei pin per il bus di dati e indirizzi
+  #define DATA_BUS_PORT PORTA
+  #define DATA_BUS_DDR DDRA
+  #define ADDR_BUS_PORT PORTB
+  #define ADDR_BUS_DDR DDRB
+  #define CONTROL_BUS_PORT PORTC
+  #define CONTROL_BUS_DDR DDRC
+  #define CHIP_ENABLE_PIN PC0
+
+  // Funzione per scrivere un byte nella RAM
+  void writeByte(unsigned int address, unsigned char data) {
+    ADDR_BUS_PORT = (address >> 8); // Inserisci l'indirizzo MSB nel bus di indirizzi
+    DATA_BUS_PORT = data; // Inserisci il dato nel bus di dati
+
+    // Controlli di scrittura
+    CONTROL_BUS_PORT |= (1 << CHIP_ENABLE_PIN); // Abilita il chip di memoria
+    CONTROL_BUS_PORT &= ~(1 << PC1); // Imposta il segnale WRITE a basso per avviare la scrittura
+    delayMicroseconds(10); // Breve ritardo per garantire che i segnali siano stabili
+    CONTROL_BUS_PORT |= (1 << PC1); // Imposta il segnale WRITE ad alto per terminare la scrittura
+    CONTROL_BUS_PORT &= ~(1 << CHIP_ENABLE_PIN); // Disabilita il chip di memoria
+  }
+
+  // Funzione per leggere un byte dalla RAM
+  unsigned char readByte(unsigned int address) {
+    ADDR_BUS_PORT = (address >> 8); // Inserisci l'indirizzo MSB nel bus di indirizzi
+
+    // Controlli di lettura
+    CONTROL_BUS_PORT |= (1 << CHIP_ENABLE_PIN); // Abilita il chip di memoria
+    CONTROL_BUS_PORT |= (1 << PC2); // Imposta il segnale READ ad alto per avviare la lettura
+    delayMicroseconds(10); // Breve ritardo per garantire che i segnali siano stabili
+    unsigned char data = DATA_BUS_PORT; // Leggi il dato dal bus di dati
+    CONTROL_BUS_PORT &= ~(1 << PC2); // Imposta il segnale READ a basso per terminare la lettura
+    CONTROL_BUS_PORT &= ~(1 << CHIP_ENABLE_PIN); // Disabilita il chip di memoria
+
+    return data;
+  }
+
+  void setup() {
+    // Configurazione dei pin
+    DATA_BUS_DDR = 0xFF; // Configura il bus di dati come uscita
+    ADDR_BUS_DDR = 0xFF; // Configura il bus di indirizzi come uscita
+    CONTROL_BUS_DDR |= (1 << CHIP_ENABLE_PIN) | (1 << PC1) | (1 << PC2); // Configura i pin di controllo come uscita
+  }
+
+  void loop() {
+    // Esempio di utilizzo: scrittura e lettura di un byte dalla RAM
+    unsigned int address = 0x1234; // Indirizzo di memoria
+    unsigned char dataToWrite = 0xAB; // Dato da scrivere
+    writeByte(address, dataToWrite); // Scrivi il dato nella RAM
+
+    unsigned char dataRead = readByte(address); // Leggi il dato dalla RAM
+    // Utilizza il dato letto come desiderato...
+
+    delay(1000); // Ritardo tra le operazioni di scrittura e lettura
+  }
+```
+
 **Fonte: https://forum.arduino.cc/t/accedere-ad-una-sram-parallela/51187**<br>
 Per gestire in lettura/scrittura una SRAM⚠️ esterna di tipo parallelo, non una seriale a cui si può accedere tramite I2C o SPI ma una classica memoria con un bus indirizzi ed un bus dati indipendenti.<br>
 
@@ -148,70 +221,6 @@ Il codice usato per leggere/scrivere sulla RAM è il seguente:
     digitalWrite(latch1pin, LOW);
     digitalWrite(latch2pin, LOW);
     return value;   
-  }
-```
-
-Un altro esempio è quello di generare un codice Writing presumendo che:<br>
-- memory chip DRAM collegati tramite bus
-- gestiti da un ATmega168-20PU<br>
-**Fonte: Chat GPT**
-```c++
-  #include <avr/io.h>
-
-  // Dichiarazioni dei pin per il bus di dati e indirizzi
-  #define DATA_BUS_PORT PORTA
-  #define DATA_BUS_DDR DDRA
-  #define ADDR_BUS_PORT PORTB
-  #define ADDR_BUS_DDR DDRB
-  #define CONTROL_BUS_PORT PORTC
-  #define CONTROL_BUS_DDR DDRC
-  #define CHIP_ENABLE_PIN PC0
-
-  // Funzione per scrivere un byte nella RAM
-  void writeByte(unsigned int address, unsigned char data) {
-    ADDR_BUS_PORT = (address >> 8); // Inserisci l'indirizzo MSB nel bus di indirizzi
-    DATA_BUS_PORT = data; // Inserisci il dato nel bus di dati
-
-    // Controlli di scrittura
-    CONTROL_BUS_PORT |= (1 << CHIP_ENABLE_PIN); // Abilita il chip di memoria
-    CONTROL_BUS_PORT &= ~(1 << PC1); // Imposta il segnale WRITE a basso per avviare la scrittura
-    delayMicroseconds(10); // Breve ritardo per garantire che i segnali siano stabili
-    CONTROL_BUS_PORT |= (1 << PC1); // Imposta il segnale WRITE ad alto per terminare la scrittura
-    CONTROL_BUS_PORT &= ~(1 << CHIP_ENABLE_PIN); // Disabilita il chip di memoria
-  }
-
-  // Funzione per leggere un byte dalla RAM
-  unsigned char readByte(unsigned int address) {
-    ADDR_BUS_PORT = (address >> 8); // Inserisci l'indirizzo MSB nel bus di indirizzi
-
-    // Controlli di lettura
-    CONTROL_BUS_PORT |= (1 << CHIP_ENABLE_PIN); // Abilita il chip di memoria
-    CONTROL_BUS_PORT |= (1 << PC2); // Imposta il segnale READ ad alto per avviare la lettura
-    delayMicroseconds(10); // Breve ritardo per garantire che i segnali siano stabili
-    unsigned char data = DATA_BUS_PORT; // Leggi il dato dal bus di dati
-    CONTROL_BUS_PORT &= ~(1 << PC2); // Imposta il segnale READ a basso per terminare la lettura
-    CONTROL_BUS_PORT &= ~(1 << CHIP_ENABLE_PIN); // Disabilita il chip di memoria
-
-    return data;
-  }
-
-  void setup() {
-    // Configurazione dei pin
-    DATA_BUS_DDR = 0xFF; // Configura il bus di dati come uscita
-    ADDR_BUS_DDR = 0xFF; // Configura il bus di indirizzi come uscita
-    CONTROL_BUS_DDR |= (1 << CHIP_ENABLE_PIN) | (1 << PC1) | (1 << PC2); // Configura i pin di controllo come uscita
-  }
-
-  void loop() {
-    // Esempio di utilizzo: scrittura e lettura di un byte dalla RAM
-    unsigned int address = 0x1234; // Indirizzo di memoria
-    unsigned char dataToWrite = 0xAB; // Dato da scrivere
-    writeByte(address, dataToWrite); // Scrivi il dato nella RAM
-
-    unsigned char dataRead = readByte(address); // Leggi il dato dalla RAM
-    // Utilizza il dato letto come desiderato...
-
-    delay(1000); // Ritardo tra le operazioni di scrittura e lettura
   }
 ```
 
