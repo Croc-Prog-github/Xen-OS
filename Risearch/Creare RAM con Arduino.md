@@ -153,7 +153,7 @@ Il codice usato per leggere/scrivere sulla RAM è il seguente:
 
 Un altro esempio è quello di generare un codice Writing presumendo che:<br>
 - memory chip DRAM collegati tramite bus
-- gestiti da un ATmega168-20PU
+- gestiti da un ATmega168-20PU<br>
 **Fonte: Chat GPT**
 ```c++
   #include <avr/io.h>
