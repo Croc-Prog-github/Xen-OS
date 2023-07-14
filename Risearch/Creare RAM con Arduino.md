@@ -1,8 +1,160 @@
 # Creare RAM con Arduino
 **Ordine**: Data di creazione, Decrescente.
 
-> 13/07/2023
+> 14/07/2023
+## Come programmare la RAM
+**Fonte: https://forum.arduino.cc/t/accedere-ad-una-sram-parallela/51187**
+Per gestire in lettura/scrittura una SRAM⚠️ esterna di tipo parallelo, non una seriale a cui si può accedere tramite I2C o SPI ma una classica memoria con un bus indirizzi ed un bus dati indipendenti.<br>
 
+Realizzato con 1 chip di SRAM (ovviamente), tre 74595 ed un 74165, interfacciati ad un Arduino. La SRAM è una Cypress 7C185 da 64 Kbit (8Kx8) ma può essere usato qualunque chip, (con le dovute modifiche).<br>
+
+Il codice usato per leggere/scrivere sulla RAM è il seguente:
+
+**WARNIG: Questo codice non è verificato**
+```c++
+  /* CONNECTION TEST TO A SRAM CHIP OF 8Kx8
+  USING 2 74595 SHIFT REGISTERS TO MANAGE THE ADDRESS,
+  1 74595 TO MANAGE THE DATA TO BE READ/WRITTEN INTO THE RAM
+  AND 1 74165 P/S SHIFT REG. TO READ DATA FROM RAM
+  */
+  #include <EEPROM.h>
+
+  // Connecting the pins
+  //1st and 2nd 595
+  #define data1pin 2 //pin DS
+  #define latch1pin 3 //pin ST_CP
+  #define clock1pin 4 //pin SH_CP 
+
+  //3rd chip 595
+  #define data2pin 7 //pin DS
+  #define latch2pin 8 //pin ST_CP
+  #define clock2pin 9 //pin SH_CP
+
+  //SRAM Chip
+  #define ram_we 5 //pin WE/ + 3rd 595 OE/
+  #define ram_oe 6 //pin OE/
+
+  //chip 165
+  #define load_data 11 //pin CP
+  #define set_load 12 //pin PL/
+  #define clock_pin 10 //pin Q7
+
+  void setup() {
+    //initial pin setup
+ 
+    //pin of the shift registers 1, 2 and 3: OUTPUT
+    pinMode(latch1pin, OUTPUT);
+    pinMode(clock1pin, OUTPUT);
+    pinMode(data1pin, OUTPUT);
+    pinMode(data2pin, OUTPUT);
+    pinMode(clock2pin, OUTPUT);
+    pinMode(latch2pin, OUTPUT);
+    
+    //RAM pins: OUTPUT
+    pinMode(ram_we, OUTPUT);
+    pinMode(ram_oe, OUTPUT);
+    
+    //S/r 165
+    pinMode(clock_pin, OUTPUT);
+    pinMode(set_load, OUTPUT);
+    pinMode(load_data, INPUT);  
+    
+    //initialize ram
+    digitalWrite(ram_oe, HIGH);
+    digitalWrite(ram_we, HIGH);
+    
+    //set D13 for LED flashes
+    pinMode(13, OUTPUT);
+    
+    for (unsigned int mem_address = 0; mem_address <20; mem_address++) {
+        write_ram(mem_address, 0);
+    }
+  }
+
+  void loop() {
+    unsigned int mem_address; //the address to be used
+    byte value = 3; //the value to be used
+
+    // clear 10 locations in the SRAM and then write a sequence of numbers
+    for (mem_address = 0; mem_address < 20; mem_address++) {
+        write_ram(mem_address, value);
+        value += 3;
+    }
+    delay(500);
+    
+    value = 255;
+    //read the first 10 bytes and then write them into the uC EEPROM
+    for (mem_address = 0; mem_address < 20; mem_address++) {
+        value = read_ram(mem_address);
+        EEPROM.write(mem_address, value);
+        delay(10);
+    }
+    digitalWrite(13, HIGH);
+    delay(3000);
+    digitalWrite(13, LOW);
+  }
+
+  void write_ram(unsigned int mem_address, byte value) {
+    byte hbyte, lbyte;
+    
+    digitalWrite(set_load, HIGH); // put the 165 pins in H.I. to prevent short circuits on the data bus
+    //write the address into the shift registers 1 and 2
+    digitalWrite(latch1pin, LOW);
+    digitalWrite(latch2pin, LOW);
+    digitalWrite(clock1pin, LOW);
+    digitalWrite(clock2pin, LOW);
+    hbyte = highByte(mem_address);
+    lbyte = lowByte(mem_address);
+    shiftOut(data1pin, clock1pin, MSBFIRST, hbyte);
+    shiftOut(data1pin, clock1pin, MSBFIRST, lbyte);
+    //write the value into the 3rd s/r
+    shiftOut(data2pin, clock2pin, MSBFIRST, value);
+    //set the address and data "visibile" on the busses
+    digitalWrite(latch1pin, HIGH);
+    digitalWrite(latch2pin, HIGH);
+    //write to RAM
+    digitalWrite(ram_we, LOW);
+    digitalWrite(ram_we, HIGH);
+    
+    //disable all the chips
+    digitalWrite(latch1pin, LOW);
+    digitalWrite(latch2pin, LOW);
+  }
+
+  byte read_ram(unsigned int mem_address) {
+    byte value, hbyte, lbyte;
+    
+    //read the content of the byte "indirizzo"
+    //write the address
+    digitalWrite(latch1pin, LOW);
+    digitalWrite(latch2pin, LOW);
+    digitalWrite(ram_we, HIGH); //disable the 3rd 595 and tell the RAM not to write in itself
+    hbyte = highByte(mem_address);
+    lbyte = lowByte(mem_address);
+    shiftOut(data1pin, clock1pin, MSBFIRST, hbyte);
+    shiftOut(data1pin, clock1pin, MSBFIRST, lbyte);
+    
+    //set the address "visible" on the bus
+    digitalWrite(latch1pin, HIGH);
+    digitalWrite(latch2pin, HIGH);
+    //prepare the 165
+    digitalWrite(clock_pin, HIGH);
+    digitalWrite(set_load, LOW);
+    //read from RAM
+    digitalWrite(ram_oe, LOW);
+    //load the data from the 165
+    digitalWrite(set_load, HIGH);
+    digitalWrite(ram_oe, HIGH);
+    value = shiftIn(load_data, clock_pin, MSBFIRST);
+    digitalWrite(latch1pin, LOW);
+    digitalWrite(latch2pin, LOW);
+    return value;   
+  }
+```
+Non sono presenti altri scipt esempio generico come questo.
+
+
+> 13/07/2023
 ## Memory chip:
 
 **Memory chip: 23LCV1024**<br>
