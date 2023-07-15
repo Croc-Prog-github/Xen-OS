@@ -12,6 +12,7 @@
 |Velocità:✖️|Velocità:✔️|
 |Refresh:✖️|Refresh:?|
 |Affidabilità:✖️|Affidabilità:✔️|
+
 **DRAM win**
 
 > 14/07/2023
