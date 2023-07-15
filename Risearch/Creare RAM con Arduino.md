@@ -1,6 +1,19 @@
 # Creare RAM con Arduino
 **Ordine**: Data di creazione, Decrescente.
 
+> 15/07/2023
+## Pro e contro SRAM e DRAM
+|**DRAM**|**SRAM**|
+|--------|--------|
+|Capacità:✔️|Capacità:?|
+|Costo:✔️|Costo:✖️|
+|Energia:✔️|Energia:?|
+|Scalabilità:✔️|Latenza:✔️|
+|Velocità:✖️|Velocità:✔️|
+|Refresh:✖️|Refresh:?|
+|Affidabilità:✖️|Affidabilità:✔️|
+**DRAM win**
+
 > 14/07/2023
 ## Come programmare la RAM
 
