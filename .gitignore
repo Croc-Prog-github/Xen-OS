@@ -1,3 +1,11 @@
+# File log, temporan.
 *.tmp
-*.$$$
+*.~*
 *.log
+
+# File debug
+*.map
+*.pdb
+
+# File config.
+*.ini
