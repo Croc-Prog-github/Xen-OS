@@ -1,5 +1,5 @@
 /*
-For the guide go to: https://github.com/Croc-Prog-github/Xen-OS/Documents/Guide/Usare_TermCom.md
+For the guide go to: https://github.com/Croc-Prog-github/Xen-OS/blob/main/Documents/Guide/Usare%20TermCom.md
 */
 #include <iostream>
 #include <string>
