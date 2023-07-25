@@ -1,5 +1,19 @@
 # Creare RAM con Arduino
 **Ordine**: Data di creazione, Decrescente.
+> 25/07/2023
+
+**Fonte: [www.mouser.it](https://www.mouser.it/ProductDetail/ISSI/IS42S81600F-7TL?qs=9hm%252BDT1Jr7ydJlC0KQMDXA%3D%3D)**
+
+**Memory chip: IS42S81600F-7TL**<br>
+Tipo: DRAM✔️<br>
+Sottotipo: SDRAM<br>
+Larghezza bus dati:	8 bit<br>
+Organizzazione:	16 M x 8<br>
+Dimensioni memoria:	128 Mbit<br>
+Frequenza di clock massima:	143 MHz<br>
+Tensione di alimentazione Max: 3.6 V<br>
+Tensione di alimentazione Min: 3 V<br>
+
 
 > 15/07/2023
 ## Pro e contro SRAM e DRAM
