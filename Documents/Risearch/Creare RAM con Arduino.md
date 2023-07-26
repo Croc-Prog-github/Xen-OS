@@ -1,5 +1,16 @@
 # Creare RAM con Arduino
 **Ordine**: Data di creazione, Decrescente.
+
+>  26/07/2023
+
+### Datashell Memory chip: IS42S16400F
+
+**Fonte: [www.alldatasheet.com](https://pdf1.alldatasheet.com/datasheet-pdf/view/310968/ISSI/IS42S16400F.html)**
+
+[Datashell IS42S16400F](/Documents/Risearch/pdf/IS42S16400F.PDF)
+
+Help: [Sei su VScode e si vede strano? Installa questo da Marketplace](https://marketplace.visualstudio.com/items?itemName=tomoki1207.pdf)
+
 > 25/07/2023
 
 **Fonte: [www.mouser.it](https://www.mouser.it/ProductDetail/ISSI/IS42S81600F-7TL?qs=9hm%252BDT1Jr7ydJlC0KQMDXA%3D%3D)**
