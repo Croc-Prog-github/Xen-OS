@@ -3,19 +3,28 @@
 
 >  26/07/2023
 
-### Datashell Memory chip: IS42S16400F
+### Memory chip: IS42S16400F-7TL
 
-**Fonte: [www.alldatasheet.com](https://pdf1.alldatasheet.com/datasheet-pdf/view/310968/ISSI/IS42S16400F.html)**
+**Fonte: [www.mouser.it](https://www.mouser.it/ProductDetail/ISSI/IS42S16400F-7TL?qs=v9o34zvNDAZm8HO2EnJw4g%3D%3D)**<br>
 
-[Datashell IS42S16400F](/Documents/Risearch/pdf/IS42S16400F.PDF)
+[Datashell IS42S16400F-7TL](https://www.mouser.it/datasheet/2/198/42-45S16400F-258310.pdf)<br>
 
-Help: [Sei su VScode e si vede strano? Installa questo da Marketplace](https://marketplace.visualstudio.com/items?itemName=tomoki1207.pdf)
+Tipo: DRAM✔️<br>
+Sottotipo: SDRAM<br>
+Larghezza bus dati:	16 bit<br>
+Organizzazione:	4 M x 16<br>
+Dimensioni memoria:	64 Mbit<br>
+Frequenza di clock massima:	143 MHz<br>
+Tensione di alimentazione Max: 3.6 V<br>
+Tensione di alimentazione Min: 3 V<br>
+Corrente di alimentazione Max: 100 mA<br>
+
 
 > 25/07/2023
 
 **Fonte: [www.mouser.it](https://www.mouser.it/ProductDetail/ISSI/IS42S81600F-7TL?qs=9hm%252BDT1Jr7ydJlC0KQMDXA%3D%3D)**
 
-**Memory chip: IS42S81600F-7TL**<br>
+**~~Memory chip: IS42S81600F-7TL~~**<br>
 Tipo: DRAM✔️<br>
 Sottotipo: SDRAM<br>
 Larghezza bus dati:	8 bit<br>
